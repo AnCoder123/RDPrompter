@@ -28,9 +28,7 @@ pip install -r requirements.txt
 **Parameter setting**
 
 + The main parameters of this project are present in the configuration files('./config/XXX.yaml').  
-
 + Explanation of important parameters:
-
     ```shell
     train:
       experiment_name: '' # The project name
@@ -69,7 +67,6 @@ pip install -r requirements.txt
 **Training model**
 
 * Training and validating the RDPrompter
-
     ```shell
     # MVTec-Unseen
     python train.py --task_name few_shot_segMVTec1
@@ -80,9 +77,7 @@ pip install -r requirements.txt
     
     # Please refer to MVTec-Unseen for running SDD,FSSD-12,CID datasets
     ```
-
 * or just run the script
-
     ```shell
     sh train.sh
     ```
@@ -100,7 +95,6 @@ pip install -r requirements.txt
     
     # Please refer to MVTec-Unseen for running SDD,FSSD-12,CID datasets
     ```
-
 * or run the script
     ```shell
     sh test.sh
@@ -109,23 +103,15 @@ pip install -r requirements.txt
 ## Results
 
 + **MVTec-Unseen**
-
   ![MVTec](./figs/MVTec.jpg)
 
-  
-
 + **SDD**
-
   ![SDD](./figs/SDD.jpg)
 
-  
-
 + **FSSD-12**
-
   ![FSSD-12](./figs/FSSD-12.jpg)
 
 + **CID**
-
   ![CID](./figs/CID.jpg)
 
 ## Notes
