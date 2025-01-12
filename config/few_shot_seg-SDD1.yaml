@@ -1,0 +1,105 @@
+train:
+  experiment_name: 'fewshot_samSDD'
+  class_name: 'Fold-1'
+
+
+  model:
+    sam_name: 'sem_sam'   # 
+    params:
+      fix_img_en: True
+      fix_prompt_en: False
+      fix_mask_de: True
+      ckpt_path: '/root/data/Second/FinetuningSAMdataset/premodel/sam_vit_l_0b3195.pth'
+      class_num: 2 
+      model_type: 'vit_l'    
+
+
+  # Dataset
+  dataset:
+    name: 'few_sem2'
+    params:
+      metainfo:
+        class_names: 'Fold-1'
+      dataset_dir: '/root/data/Second/FinetuningSAMdataset/SDD/'
+      state: 'train'
+      n_ways: 1
+      n_shots: 1
+      
+    transforms:
+      resize:
+        params:
+          size: [1024, 1024]
+      to_tensor:
+        params: ~
+    target_transforms:
+      resize:
+        params:
+          size: [256, 256]
+
+  # Losses
+  losses:
+    ce:
+      weight: 1.0
+      params:  # ~ means None type, the initial params of loss could be identified here
+        ignore_index: 255
+      label_one_hot: False
+
+  # Optimizer
+  opt_params:
+    lr_default:  1e-3
+    wd_default: 1e-4
+    momentum: 0.9
+    lr_list:  [ 1e-2, ]
+    group_keys: [ [ 'mask_adapter.decoder_head.output_hypernetworks_mlps', ], ]
+    wd_list:  [ 0.0, ]
+  opt_name: 'sgd' 
+  scheduler_name: 'cosine'
+
+  # Runner
+  max_iter: 2000
+  log_iter: 50
+  eval_iter: 50
+  runner_name: 'sem_runner'
+
+  # Dataloader
+  bs: 1 
+  num_workers: 2
+  drop_last: True
+
+  # Logger
+  use_tensorboard: True
+  tensorboard_folder: './experiment/tensorboard'
+  log_folder: './experiment/log'
+  model_folder: './experiment/model'
+
+
+val:
+  # Dataset
+  dataset:
+    name: 'few_sem2'
+    params:
+      metainfo:
+        class_names: 'Fold-1'
+      dataset_dir: '/root/data/Second/FinetuningSAMdataset/SDD/'
+      state: 'test'
+      n_ways: 1
+      n_shots: 1
+    transforms:
+      resize:
+        params:
+          size: [1024, 1024]
+      to_tensor:
+        params: ~
+    target_transforms:
+      resize:
+        params:
+          size: [256, 256]
+
+  bs: 1
+  num_workers: 2
+  drop_last: True
+
+
+test:
+  need_test: False
+

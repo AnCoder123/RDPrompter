@@ -21,9 +21,9 @@ pip install -r requirements.txt
 +  Download FSSD-12 dataset form [here](https://github.com/VDT-2048/CPANet)
 +  A portion of the CID dataset is sourced from corporate collaborations. If you want to the data，please send  the email to us. we will send the download link once we receive and confirm your signed agreement. The email will be released to the public  after the review.
 
-**Pretrained Weights**
+**Pretrained weights**
 
-+  the  pretrained weights of SAM can be downloaded  form [here](https://github.com/facebookresearch/segment-anything)
++  The  pretrained weights of SAM can be downloaded  form [here](https://github.com/facebookresearch/segment-anything)
 
 **Parameter setting**
 
@@ -51,7 +51,7 @@ pip install -r requirements.txt
           dataset_dir: '' # The path of dataset
           state: 'train'
           n_ways: 1
-          n_shots: 1
+          n_shots: 1  # The number of samples
       
     val:
       dataset:
@@ -62,11 +62,11 @@ pip install -r requirements.txt
           dataset_dir: '' # The path of pretrained weights
           state: 'test'
           n_ways: 1
-          n_shots: 1
+          n_shots: 1 # The number of samples
     、
     ```
 
-**Training Model**
+**Training model**
 
 * Training and validating the RDPrompter
 
@@ -87,7 +87,7 @@ pip install -r requirements.txt
     sh train.sh
     ```
 
-**Testing Model**
+**Testing model**
 
 + Testing  the RDPrompter
     ```shell
@@ -106,7 +106,7 @@ pip install -r requirements.txt
     sh test.sh
     ```
 
-## Reuslts
+## Results
 
 + **MVTec-Unseen**
 
@@ -116,20 +116,19 @@ pip install -r requirements.txt
 
 + **SDD**
 
-  ![MVTec](./figs/SDD.jpg)
+  ![SDD](./figs/SDD.jpg)
 
   
 
 + **FSSD-12**
 
-  ![MVTec](./figs/FSSD-12.jpg)
+  ![FSSD-12](./figs/FSSD-12.jpg)
 
 + **CID**
 
-  ![MVTec](./figs/CID.jpg)
+  ![CID](./figs/CID.jpg)
 
 ## Notes
 
 + The code for this project refers to [SAM](https://github.com/facebookresearch/segment-anything). Thanks for the authors for their efforts.
 + If there are any issues with the code, please  send the email  to us.
-
