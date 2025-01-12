@@ -16,10 +16,36 @@ pip install -r requirements.txt
 
 **Data preparation**
 
-+  Download MVTec AD dataset form [here](https://www.mvtec.com/company/research/datasets/mvtec-ad/downloads)，and build MVTec-Unseen dataset according to the paper "Unseen-Material Few-Shot Defect Segmentation With Optimal Bilateral Feature Transport Network"
-+  Download SDD dataset form [here](https://github.com/bbbbby-99/TGRNet-Surface-Defect-Segmentation)
-+  Download FSSD-12 dataset form [here](https://github.com/VDT-2048/CPANet)
++ Download MVTec AD dataset form [here](https://www.mvtec.com/company/research/datasets/mvtec-ad/downloads)，and build MVTec-Unseen dataset according to the paper "Unseen-Material Few-Shot Defect Segmentation With Optimal Bilateral Feature Transport Network (IEEE TII 2023)"
+
++ Download SDD dataset form [here](https://github.com/bbbbby-99/TGRNet-Surface-Defect-Segmentation)
+
++ Download FSSD-12 dataset form [here](https://github.com/VDT-2048/CPANet)
+
 +  A portion of the CID dataset is sourced from corporate collaborations. If you want to the data，please send  the email to us. we will send the download link once we receive and confirm your signed agreement. The email will be released to the public  after the review.
+    
++  Before training the RDPrompter, the downloaded dataset needs to be organized into the following form:
+    
+    ```shell
+    Dataset/
+        └── Fold1
+            ├── test
+                  ├── class1
+                        ├── XXXX.[png,jpg]
+                        ├── ...
+                  ├── class2
+                  ├── ...
+            ├── ground_truth
+                  ├── class1
+                        ├── XXXX.[png,jpg]
+                        ├── ...
+                  ├── class2
+                  ├── ...
+        └── Fold2
+            ├── test
+            ├── ground_truth
+        └── ...
+    ```
 
 **Pretrained weights**
 
@@ -27,12 +53,12 @@ pip install -r requirements.txt
 
 **Parameter setting**
 
-+ The main parameters of this project are present in the configuration files('./config/XXX.yaml').  
++ The main parameters of this project are present in the configuration files('./config/XXX.yaml').  Before training the model, the related parameters need to be updated in the configuration files according to the runtime environment.
 + Explanation of important parameters:
     ```shell
     train:
       experiment_name: '' # The project name
-      class_name: '' # The class name
+      class_name: '' # The test class set,such as Fold1
     
       model:
         sam_name: 'sem_sam'   
@@ -45,7 +71,7 @@ pip install -r requirements.txt
         name: 'few_sem'
         params:
           metainfo:
-            class_names: '' # The class name
+            class_names: '' # The test class set,such as Fold1
           dataset_dir: '' # The path of dataset
           state: 'train'
           n_ways: 1
@@ -56,8 +82,8 @@ pip install -r requirements.txt
         name: 'few_sem'
         params:
           metainfo:
-            class_names: '' # The class name
-          dataset_dir: '' # The path of pretrained weights
+            class_names: '' # The test class set,such as Fold1
+          dataset_dir: '' # The path of dataset
           state: 'test'
           n_ways: 1
           n_shots: 1 # The number of samples
