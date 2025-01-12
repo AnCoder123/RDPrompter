@@ -53,7 +53,7 @@ pip install -r requirements.txt
 
 **Parameter setting**
 
-+ The main parameters of this project are present in the configuration files('./config/XXX.yaml').  Before training the model, the related parameters need to be updated in the configuration files according to the runtime environment.
++ The main parameters of this project are present in the configuration files('./config/XXX.yaml').  Before training the model, the related paths need to be updated in the configuration files according to the runtime environment.
 + Explanation of important parameters:
     ```shell
     train:
