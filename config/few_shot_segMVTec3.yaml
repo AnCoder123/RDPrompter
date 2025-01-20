@@ -3,7 +3,7 @@ train:
   class_name: 'leather'
 
   model:
-    sam_name: 'sem_sam'   # 
+    sam_name: 'sem_sam'  
     params:
       fix_img_en: True
       fix_prompt_en: False

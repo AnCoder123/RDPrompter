@@ -285,15 +285,14 @@ def get_rel_pos(q_size: int, k_size: int, rel_pos: torch.Tensor) -> torch.Tensor
     return rel_pos_resized[relative_coords.long()]
 
 
-
 class CSAttention(nn.Module):
     def __init__(self):
         super().__init__()
 
         self.contweights = nn.Parameter(torch.rand(5))
-
+        self.num_blocks=1
         self.blocks = nn.ModuleList()
-        for i in range(2):
+        for i in range(self.num_blocks):
             block = Block(
                 dim=256,
                 num_heads=8,
@@ -318,4 +317,3 @@ class CSAttention(nn.Module):
             x = blk(x,ycont)
         x=self.lin1(x)
         return x
-

@@ -121,19 +121,17 @@ class AffinityLearner(nn.Module):
         self.in_channels = in_channels
         self.out_channels = out_channels
         self.bilinear = bilinear
-        self.in_conv = doubleConv(self.in_channels,base_channel)
-        self.CCAtn1 = SelfAttention(base_channel)
-        self.CCAtn2 = SelfAttention(base_channel)
-        self.CCAtn3 = SelfAttention(base_channel)
-        self.CCAtn4 = SelfAttention(base_channel)
+        self.num_blocks=4
+        self.in_conv = nn.Conv2d(in_channels=self.in_channels,out_channels=base_channel,kernel_size=1)
+        self.SFAtns = nn.ModuleList()
+        for i in range(self.num_blocks):
+            self.SFAtns.append(SelfAttention(base_channel))
         self.out = nn.Conv2d(in_channels=base_channel,out_channels=self.out_channels,kernel_size=1)
 
     def forward(self,x):
         x = self.in_conv(x)
-        x= self.CCAtn1(x)
-        x= self.CCAtn2(x)
-        x= self.CCAtn3(x)
-        x= self.CCAtn4(x)
+        for i in range(self.num_blocks):
+            x= self.SFAtns[i](x)
         out = self.out(x)
 
         return out
