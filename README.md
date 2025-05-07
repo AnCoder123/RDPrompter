@@ -22,7 +22,7 @@ pip install -r requirements.txt
 
 + Download FSSD-12 dataset form [here](https://github.com/VDT-2048/CPANet)
 
-+  A portion of the CID dataset is sourced from corporate collaborations. If you want to the data，please send  the email to us. We will send the download link once we receive and confirm your signed agreement. The email will be released to the public after the review.
++  Download CID dataset form [here](./dataset/)
     
 +  Before training the RDPrompter, the downloaded dataset needs to be organized into the following form:
     
