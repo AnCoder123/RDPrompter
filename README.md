@@ -1,5 +1,5 @@
 # RDPrompter（under review）
-# [Link to Previous Review Responses](./CrossIndustryDataset/)
+# <center>[Link to Previous Review Responses](./CrossIndustryDataset/)</center>
 
 ## Introduction
 
@@ -145,4 +145,5 @@ pip install -r requirements.txt
 
 + The code for this project refers to [SAM](https://github.com/facebookresearch/segment-anything). Thanks for the authors for their efforts.
 + If there are any issues with the code, please  send the email  to us.
+
 
