@@ -1,7 +1,5 @@
 # RDPrompter（under review）
 
-# <div align="center"> :fire:[Previous Three Rounds of Review Responses](./CrossIndustryDataset/) </div>
-
 ## Introduction
 
 This repository provides the related code and  experimental details for our research on RDPrompter
@@ -146,6 +144,7 @@ pip install -r requirements.txt
 
 + The code for this project refers to [SAM](https://github.com/facebookresearch/segment-anything). Thanks for the authors for their efforts.
 + If there are any issues with the code, please  send the email  to us.
+
 
 
 
